@@ -1,9 +1,9 @@
 const path = require("path");
-const { resolveSoa } = require("dns");
+const friends = require("../data/friends");
 
 module.exports = (app) => {
   app.get("/api/friends", (req, res) => {
-    res.send("friends get");
+    res.json(friends);
   });
 
   app.post("/api/friends", (req, res) => {
