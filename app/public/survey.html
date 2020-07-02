@@ -3,19 +3,259 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/survey.css" />
     <title>FriendFinder</title>
   </head>
   <body>
-    <header><h1>Survey Questions</h1></header>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title mx-auto">Best Match</h5>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center">
+            <p id="modalName"></p>
+            <img id="modalPhoto" alt="match" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary mx-auto"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <main>
-      <form action="">
-        <h4>Name</h4>
-        <input type="text" />
-        <h4>Link to Photo</h4>
-        <input type="text" />
+      <h1 class="title">Survey Questions</h1>
+      <form class="survey">
+        <h3 class="mb-3">About You</h3>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control col-md-4" id="name" />
+        </div>
+        <div class="form-group">
+          <label for="photo">Link to Photo</label>
+          <input type="test" class="form-control col-md-4" id="photo" />
+        </div>
+        <h3 class="mt-4">Question 1</h3>
+        <div class="form-group">
+          <label class="py-2" for="q1"
+            >Your mind is always buzzing with unexplored ideas and plans.</label
+          >
+          <select id="q1" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 2</h3>
+        <div class="form-group">
+          <label class="py-2" for="q2"
+            >Generally speaking, you rely more on your experience than your
+            imagination.</label
+          >
+          <select id="q2" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 3</h3>
+        <div class="form-group">
+          <label class="py-2" for="q3"
+            >You find it easy to stay relaxed and focused even when there is
+            some pressure.</label
+          >
+          <select id="q3" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 4</h3>
+        <div class="form-group">
+          <label class="py-2" for="q4"
+            >You rarely do something just out of sheer curiosity.</label
+          >
+          <select id="q4" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 5</h3>
+        <div class="form-group">
+          <label class="py-2" for="q5">People can rarely upset you.</label>
+          <select id="q5" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 6</h3>
+        <div class="form-group">
+          <label class="py-2" for="q6"
+            >It is often difficult for you to relate to other people’s
+            feelings.</label
+          >
+          <select id="q6" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 7</h3>
+        <div class="form-group">
+          <label class="py-2" for="q7"
+            >In a discussion, truth should be more important than people’s
+            sensitivities.
+          </label>
+          <select id="q7" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 8</h3>
+        <div class="form-group">
+          <label class="py-2" for="q8"
+            >You rarely get carried away by fantasies and ideas.
+          </label>
+          <select id="q8" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 9</h3>
+        <div class="form-group">
+          <label class="py-2" for="q9"
+            >You think that everyone’s views should be respected regardless of
+            whether they are supported by facts or not.
+          </label>
+          <select id="q9" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <h3 class="mt-4">Question 10</h3>
+        <div class="form-group">
+          <label class="py-2" for="q10"
+            >You feel more energetic after spending time with a group of people.
+          </label>
+          <select id="q10" class="form-control col-md-4">
+            <option selected>Choose...</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+        <button
+          id="submit"
+          type="submit"
+          class="btn btn-primary mt-4 col-md-2 mx-auto"
+        >
+          Submit
+        </button>
       </form>
     </main>
-    <footer></footer>
+    <footer class="footer text-center mb-2">
+      <a href="/api/friends"><span>API Friends List</span></a> |
+      <a href="https://github.com/code-guy21/FriendFinder"
+        ><span>GitHub Repo</span></a
+      >
+    </footer>
+    <script>
+      $(document).ready(function () {
+        $("#submit").click(function (event) {
+          event.preventDefault();
+          let user = {
+            name: $("#name").val(),
+            photo: $("#photo").val(),
+            scores: [
+              $("#q1").val(),
+              $("#q2").val(),
+              $("#q3").val(),
+              $("#q4").val(),
+              $("#q5").val(),
+              $("#q6").val(),
+              $("#q7").val(),
+              $("#q8").val(),
+              $("#q9").val(),
+              $("#q10").val(),
+            ],
+          };
+
+          $.ajax({
+            type: "POST",
+            url: "/api/friends",
+            data: user,
+          }).then((resp) => {
+            $("#modalName").text(resp.name);
+            $("#modalPhoto").attr("src", resp.photo);
+            $("#myModal").modal("show");
+          });
+        });
+      });
+    </script>
   </body>
 </html>
