@@ -1,4 +1,4 @@
-const friends = require("../data/friends");
+let friends = require("../data/friends");
 
 module.exports = (app) => {
   app.get("/api/friends", (req, res) => {
@@ -6,6 +6,7 @@ module.exports = (app) => {
   });
 
   app.post("/api/friends", (req, res) => {
+    friends.push(req.body);
     res.json(findMatch(req.body));
   });
 
