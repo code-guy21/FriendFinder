@@ -6,8 +6,9 @@ module.exports = (app) => {
   });
 
   app.post("/api/friends", (req, res) => {
+    const match = findMatch(req.body);
     friends.push(req.body);
-    res.json(findMatch(req.body));
+    res.json(match);
   });
 
   const findMatch = (user) => {
